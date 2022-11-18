@@ -3,7 +3,8 @@ import { fromEvent } from 'rxjs';
 /**
  * Eventos del DOM
  */
-
+// Te permite acceder a las propiedades de mouse <MouseEvent>
+// Te permite acceder a las propiedades teclado <KeyboardEvent>
 const source1$ = fromEvent<MouseEvent>(document, 'click');
 const source2$ = fromEvent<KeyboardEvent>(document, 'keyup');
 // No te permite acceder a las propiedades
