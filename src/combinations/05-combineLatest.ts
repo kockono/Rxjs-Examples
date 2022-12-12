@@ -26,7 +26,5 @@ const getInputStream = ( elem: HTMLElement ) =>
         pluck<KeyboardEvent,string>('target','value'));
 
 
-combineLatest(
-    getInputStream( input1 ),
-    getInputStream( input2 ),
-).subscribe( console.log )
+combineLatest([    getInputStream( input1 ), getInputStream( input2 ),])
+   .subscribe( console.log )
