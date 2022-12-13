@@ -1,4 +1,4 @@
-import { fromEvent, Observable } from 'rxjs';
+import { fromEvent, observable, Observable } from 'rxjs';
 import { debounceTime, map, pluck, mergeAll } from 'rxjs/operators';
 
 import { ajax } from 'rxjs/ajax';
@@ -47,11 +47,12 @@ const input$ = fromEvent<KeyboardEvent>( textInput, 'keyup' );
 
 input$.pipe(
     debounceTime<KeyboardEvent>(500),
-    pluck<KeyboardEvent, string>('target','value'),
-    map<string, Observable<GithubUsersResp>>( texto => ajax.getJSON(
+    map( ( KeyboardEvent:any ) => KeyboardEvent?.target?.value),
+    // Observable<GithubUsersResp>
+    map( (texto:any) => ajax.getJSON(
         `https://api.github.com/search/users?q=${ texto }`
     )),
-    mergeAll<GithubUsersResp>(),
-    pluck<GithubUsersResp, GithubUser[]>('items')
+    mergeAll(),
+    map((res:any) => res?.items)
 ).subscribe( mostrarUsuarios );
 

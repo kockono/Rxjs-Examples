@@ -1,7 +1,7 @@
 import { from, of } from "rxjs";
 import { distinct, distinctUntilChanged } from "rxjs/operators";
 
-const numeros$ = of<number | string>(12,3,4,5,67,2,8,8,634,62345,23,1,11,1,12,2,'1')
+const numeros$ = of<any>(12,3,4,5,67,2,8,8,634,62345,23,1,11,1,12,2,'1')
 
 // Emitira todos los valores que sean diferentes al anterior a diferencia de distinct
 // que solo acepta valores unicos sin importar el orden

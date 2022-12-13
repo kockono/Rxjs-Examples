@@ -33,7 +33,8 @@ const subs = intervalo$.subscribe(observer);
 const subs2 = intervalo$.subscribe(observer);
 const subs3 = intervalo$.subscribe(observer);
 
-subs.add(subs2).add(subs3); // Concatena los observables o los hace sus hijos (inevestigar mas a profundidad)
+subs.add(subs2)
+// .add(subs3); // Concatena los observables o los hace sus hijos (inevestigar mas a profundidad)
 
 setTimeout(() => {
     subs.unsubscribe();    

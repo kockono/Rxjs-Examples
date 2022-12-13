@@ -47,11 +47,11 @@ const input$ = fromEvent<KeyboardEvent>( textInput, 'keyup' );
 
 input$.pipe(
     debounceTime<KeyboardEvent>(500),
-    pluck<KeyboardEvent, string>('target','value'),
+    map( (res:any) => res?.target?.value),
     mergeMap<string, Observable<GithubUsersResp>>( texto => ajax.getJSON(
         `https://api.github.com/search/users?q=${ texto }`
     )),
-    pluck<GithubUsersResp, GithubUser[]>('items')
+    map(res => res.items)
 );//.subscribe( mostrarUsuarios );
 
 const url = 'https://httpbin.org/delay/1?arg='; // + fernando
